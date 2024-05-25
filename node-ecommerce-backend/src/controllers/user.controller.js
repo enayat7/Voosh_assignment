@@ -113,14 +113,14 @@ const editUploadPhoto = async(req, res) =>{
 
 const editProfile = async(req, res) =>{
     const { userID } = req.authData
-    const { name, email, bio, password, isPublic } = req.body;
+    const { name, email, bio, password, isPublic, number } = req.body;
     try {
 
     const existingUser = await User.findOne({ email, _id: { $ne: userID } });
     if (existingUser) {
       return res.status(400).send('Email already in use by another user');
     }
-    const updatedFields = { name, bio, email, isPublic };
+    const updatedFields = { name, bio, email, isPublic, number };
     if (password) {
       const salt = await bcrypt.genSalt(10);
       updatedFields.password = await bcrypt.hash(password, salt);
