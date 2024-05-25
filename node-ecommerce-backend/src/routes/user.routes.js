@@ -17,7 +17,7 @@ router.route("/login").post(loginValidate, userLogin)
 router.route("/all-profile-details").get(verifyToken,getAllProfileDetails);
 router.route("/upload-edit-photo").post(verifyToken,upload.single('photo'),editUploadPhoto)
 router.route('/edit-profile').put(verifyToken, editProfile)
-router.route('make-admin/:id').post(verifyToken,makeAdmin)
+router.route('/make-admin/:id').post(verifyToken,makeAdmin)
       
 
 
